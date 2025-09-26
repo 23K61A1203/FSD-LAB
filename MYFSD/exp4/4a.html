@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Selector Forms Demo</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f4f8;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        color: #2c3e50;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .card {
+        background: #fff;
+        width: 90%;
+        max-width: 700px;
+        padding: 20px 25px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+        margin-top: 0;
+        color: #2980b9;
+    }
+
+    .card p {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    code {
+        background: #ecf0f1;
+        padding: 2px 5px;
+        border-radius: 3px;
+    }
+
+    /* ---------------- Simple Selectors ---------------- */
+    h2.simple { color: #e67e22; } /* Element selector */
+    #unique { color: #c0392b; font-weight: bold; } /* ID selector */
+    .highlight { background-color: #d1f0d1; } /* Class selector */
+    h3, h4 { color: #8e44ad; } /* Group selector */
+    * { font-family: 'Arial', sans-serif; } /* Universal selector */
+
+    /* ---------------- Combinator Selectors ---------------- */
+    div p { background-color: #f9f9f9; padding: 5px; } /* Descendant */
+    section > p { border-left: 4px solid #333; padding-left: 8px; } /* Child */
+    h3 + p { border: 1px dashed #999; padding: 5px; } /* Adjacent sibling */
+    h4 ~ p { color: brown; font-style: italic; } /* General sibling */
+
+    /* ---------------- Pseudo-class Selector ---------------- */
+    a:hover { color: orange; text-decoration: underline; }
+
+    /* ---------------- Pseudo-element Selector ---------------- */
+    p::first-letter { font-size: 22px; color: #e74c3c; font-weight: bold; }
+
+    /* ---------------- Attribute Selector ---------------- */
+    a[target="_blank"] { background-color: #f0e68c; padding: 2px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<h1>CSS Selector Forms Demo</h1>
+
+<!-- Simple Selectors Card -->
+<div class="card">
+    <h2 class="simple">1. Simple Selectors</h2>
+    <p id="unique">ID Selector: This paragraph uses <code>#unique</code> selector to change color and make it bold.</p>
+    <p class="highlight">Class Selector: This paragraph uses <code>.highlight</code> to give background color.</p>
+    <h3>Group Selector Example (h3, h4)</h3>
+    <h4>Another Group Selector Example</h4>
+    <p>Universal Selector: All text uses the universal selector <code>*</code> for font-family.</p>
+</div>
+
+<!-- Combinator Selectors Card -->
+<div class="card">
+    <h2>2. Combinator Selectors</h2>
+    <div>
+        <p>Descendant Selector: <code>div p</code> selects this paragraph inside a div.</p>
+    </div>
+    <section>
+        <p>Child Selector: <code>section > p</code> selects this direct child paragraph.</p>
+    </section>
+    <h3>Adjacent Sibling Selector</h3>
+    <p>This paragraph is selected by <code>h3 + p</code>.</p>
+    <h4>General Sibling Selector</h4>
+    <p>All paragraphs after this h4 are selected by <code>h4 ~ p</code>.</p>
+</div>
+
+<!-- Pseudo-class & Pseudo-element Card -->
+<div class="card">
+    <h2>3. Pseudo-class Selector</h2>
+    <p>Hover over this <a href="#" target="_blank">link</a> to see the <code>:hover</code> pseudo-class effect.</p>
+
+    <h2>4. Pseudo-element Selector</h2>
+    <p>The first letter of this paragraph is styled using <code>::first-letter</code> pseudo-element.</p>
+</div>
+
+<!-- Attribute Selector Card -->
+<div class="card">
+    <h2>5. Attribute Selector</h2>
+    <p>This link has an attribute selector applied: <a href="https://www.example.com" target="_blank">Open in new tab</a></p>
+</div>
+
+</body>
+</html>

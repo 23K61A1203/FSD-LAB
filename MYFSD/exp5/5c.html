@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Font and Text Example</title>
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #a8edea, #fed6e3);
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        font-size: 42px;            /* i. font-size */
+        font-weight: bold;          /* ii. font-weight */
+        font-style: italic;         /* iii. font-style */
+        text-decoration: underline; /* iv. text-decoration */
+        text-transform: uppercase;  /* v. text-transformation */
+        text-align: center;         /* vi. text-alignment */
+        color: #2e8b57;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.8;
+        text-align: justify;
+        margin-bottom: 20px;
+    }
+
+    .highlight {
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: overline;
+        text-transform: capitalize;
+        color: darkblue;
+        text-align: right;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .example-box {
+        background: #f0f8ff;
+        border-left: 6px solid #2e8b57;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>css font and text demonstration</h1>
+
+    <p>
+        This example demonstrates how different <b>CSS font and text properties</b> 
+        can completely change the appearance of your webpage. 
+        With just a few styles, text can become more <i>beautiful</i>, 
+        <u>readable</u>, and <span style="color:crimson;font-weight:bold;">attractive</span>.
+    </p>
+
+    <div class="example-box">
+        <p>
+            <strong>Font Size:</strong> Controls how big or small the text appears.<br>
+            <strong>Font Weight:</strong> Makes the text light, normal, or bold.<br>
+            <strong>Font Style:</strong> Allows italic or normal styling.<br>
+            <strong>Text Decoration:</strong> Adds underline, overline, or strike-through.<br>
+            <strong>Text Transform:</strong> Changes text to uppercase, lowercase, or capitalize.<br>
+            <strong>Text Alignment:</strong> Aligns text to left, right, center, or justify.
+        </p>
+    </div>
+
+    <p>
+        Notice how this 
+        <span class="highlight">highlighted text looks different</span> 
+        compared to normal text because of applied CSS properties.
+    </p>
+</div>
+
+</body>
+</html>

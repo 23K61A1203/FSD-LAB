@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explanation of Hyperlinks with &lt;a&gt; Tag, href, and target Attributes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 30px;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    a.example-link {
+      display: inline-block;
+      margin: 10px 0 20px 0;
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a.example-link:hover {
+      text-decoration: underline;
+    }
+    .explanation {
+      background: #ecf0f1;
+      border-left: 4px solid #2980b9;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Understanding Hyperlinks in HTML</h1>
+
+  <section>
+    <h2>1. The &lt;a&gt; Tag</h2>
+    <div class="explanation">
+      The <code>&lt;a&gt;</code> tag is used to create hyperlinks in HTML. It is the anchor tag that wraps the clickable text or content.
+    </div>
+    <p>Example:</p>
+    <pre><code>&lt;a href="https://www.example.com"&gt;Click Here&lt;/a&gt;</code></pre>
+    <p>Output:</p>
+    <a href="https://www.example.com" class="example-link" target="_blank" rel="noopener noreferrer">Click Here</a>
+  </section>
+
+  <section>
+    <h2>2. The href Attribute</h2>
+    <div class="explanation">
+      The <code>href</code> attribute specifies the URL or link destination where the user will be taken when the link is clicked.
+    </div>
+    <p>Example:</p>
+    <pre><code>&lt;a href="https://www.openai.com"&gt;OpenAI&lt;/a&gt;</code></pre>
+    <p>Output:</p>
+    <a href="https://www.openai.com" class="example-link" target="_blank" rel="noopener noreferrer">OpenAI</a>
+  </section>
+
+  <section>
+    <h2>3. The target Attribute</h2>
+    <div class="explanation">
+      The <code>target</code> attribute specifies where to open the linked document. Common values include:
+      <ul>
+        <li><code>_self</code> (default) - Opens the link in the same window/tab.</li>
+        <li><code>_blank</code> - Opens the link in a new window or tab.</li>
+        <li><code>_parent</code> - Opens the link in the parent frame.</li>
+        <li><code>_top</code> - Opens the link in the full body of the window.</li>
+      </ul>
+    </div>
+    <p>Example without <code>target</code> (opens in same tab):</p>
+    <pre><code>&lt;a href="https://www.wikipedia.org"&gt;Wikipedia&lt;/a&gt;</code></pre>
+    <p>Output:</p>
+    <a href="https://www.wikipedia.org" class="example-link" rel="noopener noreferrer">Wikipedia (Same Tab)</a>
+
+    <p>Example with <code>target="_blank"</code> (opens in new tab):</p>
+    <pre><code>&lt;a href="https://www.wikipedia.org" target="_blank"&gt;Wikipedia&lt;/a&gt;</code></pre>
+    <p>Output:</p>
+    <a href="https://www.wikipedia.org" class="example-link" target="_blank" rel="noopener noreferrer">Wikipedia (New Tab)</a>
+  </section>
+
+</body>
+</html>

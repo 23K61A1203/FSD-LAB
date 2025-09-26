@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Different Types of CSS Styles</title>
+
+    <!-- Internal Style -->
+    <style>
+        /* General Page Styling */
+        body {
+            margin: 0;
+            font-family: Verdana, sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Internal CSS Example */
+        p {
+            font-size: 18px;
+            color: navy;
+            background: #e0f7fa;
+            padding: 10px;
+            border-radius: 10px;
+            width: 70%;
+            margin: 20px auto;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* External CSS (simulated here for demo) */
+        h2 {
+            color: green;
+            text-decoration: underline;
+            font-family: Georgia, serif;
+            background: #f1f8e9;
+            padding: 12px;
+            border: 2px solid green;
+            width: 70%;
+            margin: 20px auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        h2:hover {
+            transform: scale(1.05);
+            background: #c8e6c9;
+        }
+
+        /* Explanation Box */
+        .explain {
+            font-size: 16px;
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 12px;
+            margin: 15px auto 40px;
+            width: 70%;
+            text-align: left;
+            border-radius: 8px;
+            box-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Inline Style Example -->
+    <h1 style="color: crimson; font-family: 'Trebuchet MS'; 
+               background: #ffe0e0; padding: 15px; 
+               border-radius: 12px; width: 70%; margin: 20px auto; 
+               box-shadow: 3px 3px 10px rgba(0,0,0,0.3);">
+        Inline Styled Heading
+    </h1>
+    <div class="explain">
+        <b>Inline CSS:</b> Applied directly to an element using the <code>style</code> attribute.  
+        Example → <code>&lt;h1 style="color:crimson;"&gt;</code>.  
+        Here, the selector is <b>h1</b>, the property is <b>color</b>, and the value is <b>crimson</b>.
+    </div>
+
+    <!-- External Style Example (simulated in <style>) -->
+    <h2>This is an External Styled Heading</h2>
+    <div class="explain">
+        <b>External CSS:</b> Normally written in a separate <code>.css</code> file and linked using 
+        <code>&lt;link&gt;</code>. For demo, it is written inside the <code>&lt;style&gt;</code> block.  
+        Selector: <b>h2</b>, Property: <b>color</b>, Value: <b>green</b>.
+    </div>
+
+    <!-- Internal Style Example -->
+    <p>This paragraph is styled using Internal CSS. Notice the font size, color, background, and padding.</p>
+    <div class="explain">
+        <b>Internal CSS:</b> Defined inside the <code>&lt;style&gt;</code> tag within the same HTML file.  
+        Selector: <b>p</b>, Property: <b>font-size</b>, Value: <b>18px</b>.  
+        This method is useful for applying styles to one web page only.
+    </div>
+
+</body>
+</html>

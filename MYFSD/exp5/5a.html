@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Color Demonstration</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f9fa;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    .color-box {
+        width: 90%;
+        max-width: 550px;
+        margin: 15px auto;
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Different Color References */
+    .named { background-color: red; }
+    .hex { background-color: #ff5733; }
+    .rgb { background-color: rgb(0, 128, 255);}
+    .rgba { background-color: rgba(0, 128, 255, 0.6);}
+    .hsl { background-color: hsl(200, 100%, 50%);}
+    .hsla { background-color: hsla(200, 100%, 50%, 0.5);}
+</style>
+</head>
+<body>
+
+<h1>Different Ways to Use Colors in CSS</h1>
+
+<div class="color-box named">
+    <strong>Named Colors:</strong> CSS supports 140+ predefined color names like <em>red</em>, 
+    <em>blue</em>, <em>green</em>. These are easy to remember and quick to apply.
+</div>
+
+<div class="color-box hex">
+    <strong>HEX Codes:</strong> Colors are defined using hexadecimal values, e.g. 
+    <code>#ff5733</code>. This is commonly used in web design because it is precise.
+</div>
+
+<div class="color-box rgb">
+    <strong>RGB:</strong> Defined by mixing red, green, and blue values (0–255). 
+    Example: <code>rgb(0, 128, 255)</code> gives a bright blue.
+</div>
+
+<div class="color-box rgba">
+    <strong>RGBA:</strong> Same as RGB but with an Alpha channel for transparency. 
+    Example: <code>rgba(0,128,255,0.6)</code> makes the box slightly see-through.
+</div>
+
+<div class="color-box hsl">
+    <strong>HSL:</strong> Defined by Hue (color angle), Saturation (%), and Lightness (%). 
+    Example: <code>hsl(200, 100%, 50%)</code> gives vivid blue.
+</div>
+
+<div class="color-box hsla">
+    <strong>HSLA:</strong> Same as HSL but with transparency support. 
+    Example: <code>hsla(200, 100%, 50%, 0.5)</code> creates a semi-transparent blue.
+</div>
+
+</body>
+</html>
