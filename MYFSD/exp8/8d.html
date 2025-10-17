@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Looping Through Object Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f0faff, #dceeff);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 { margin-bottom: 20px; }
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 5px;
+    }
+    button:hover { background: #1d4ed8; }
+    #output {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #1e40af;
+      font-weight: bold;
+      white-space: pre-line;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Printing Object Data Using Different Loops</h1>
+    <p>Click the buttons below to see object data printed using different loops:</p>
+
+    <button onclick="useForIn()">For-In Loop</button>
+    <button onclick="useForEach()">forEach Loop (on Object Values)</button>
+    <button onclick="useForOf()">for-of Loop (on Object Entries)</button>
+    <button onclick="clearOutput()">Clear Output</button>
+
+    <div id="output">👉 Output will appear here</div>
+  </div>
+
+  <script>
+    // Example object
+    const person = {
+      name: "Chandana",
+      age: 22,
+      city: "Hyderabad",
+      profession: "Engineer"
+    };
+
+    function useForIn() {
+      let result = "Using for-in loop:\n";
+      for (let key in person) {
+        result += key + " : " + person[key] + "\n";
+      }
+      document.getElementById("output").innerText = result;
+    }
+
+    function useForEach() {
+      let result = "Using forEach loop (on Object.values):\n";
+      Object.values(person).forEach((value, index) => {
+        result += index + 1 + " => " + value + "\n";
+      });
+      document.getElementById("output").innerText = result;
+    }
+
+    function useForOf() {
+      let result = "Using for-of loop (on Object.entries):\n";
+      for (let [key, value] of Object.entries(person)) {
+        result += key + " : " + value + "\n";
+      }
+      document.getElementById("output").innerText = result;
+    }
+
+    function clearOutput() {
+      document.getElementById("output").innerText = "👉 Output will appear here";
+    }
+  </script>
+</body>
+</html>

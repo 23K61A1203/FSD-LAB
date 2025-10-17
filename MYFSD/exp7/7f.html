@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RegExp Object Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f0f9f0, #e0f2e0);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 750px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 16px;
+      margin: 8px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #059669;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover { background: #047857; }
+    #output {
+      margin-top: 20px;
+      background: #f0fdf4;
+      padding: 15px;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>RegExp Object Properties & Methods</h1>
+    <p>Click the buttons to explore <b>RegExp</b> object features:</p>
+
+    <button onclick="testRegex()">Test Pattern</button>
+    <button onclick="execRegex()">Exec Pattern</button>
+    <button onclick="searchRegex()">Search</button>
+    <button onclick="matchRegex()">Match</button>
+    <button onclick="replaceRegex()">Replace</button>
+    <button onclick="splitRegex()">Split</button>
+
+    <div id="output">👉 Results will appear here.</div>
+  </div>
+
+  <script>
+    let text = "The rain in SPAIN stays mainly in the plain.";
+
+    function testRegex() {
+      let pattern = /ain/gi;
+      let result = pattern.test(text); // true if pattern exists
+      document.getElementById("output").innerText =
+        `Pattern /ain/gi tested on:\n"${text}"\nResult: ${result}`;
+    }
+
+    function execRegex() {
+      let pattern = /ain/gi;
+      let match = pattern.exec(text); // returns first match object
+      document.getElementById("output").innerText =
+        `Pattern /ain/gi exec on:\n"${text}"\nResult: ${match ? match[0] + " at index " + match.index : "No match"}`;
+    }
+
+    function searchRegex() {
+      let pattern = /Spain/i;
+      let index = text.search(pattern); // index of match
+      document.getElementById("output").innerText =
+        `Pattern /Spain/i searched in:\n"${text}"\nFound at index: ${index}`;
+    }
+
+    function matchRegex() {
+      let pattern = /ain/gi;
+      let matches = text.match(pattern); // array of all matches
+      document.getElementById("output").innerText =
+        `Pattern /ain/gi matches in:\n"${text}"\nMatches: ${matches}`;
+    }
+
+    function replaceRegex() {
+      let pattern = /ain/gi;
+      let replaced = text.replace(pattern, "XXX");
+      document.getElementById("output").innerText =
+        `Pattern /ain/gi replaced in:\n"${text}"\nResult: "${replaced}"`;
+    }
+
+    function splitRegex() {
+      let pattern = /\s/; // split by whitespace
+      let parts = text.split(pattern);
+      document.getElementById("output").innerText =
+        `Text split by /\\s/ (whitespace):\n"${text}"\nResult: [${parts.join(", ")}]`;
+    }
+  </script>
+</body>
+</html>

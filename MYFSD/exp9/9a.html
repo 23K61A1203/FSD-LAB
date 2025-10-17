@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions & Events — Factorial, Fibonacci, Prime, Palindrome</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 30px;
+      text-align: center;
+      max-width: 450px;
+    }
+    h1 {
+      color: #0d47a1;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1976d2;
+      color: white;
+      cursor: pointer;
+      margin: 4px;
+    }
+    button:hover {
+      background-color: #0d47a1;
+    }
+    #result {
+      margin-top: 20px;
+      text-align: left;
+      background: #f1f5f9;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>JavaScript Functions & Events</h1>
+    <input type="number" id="num" placeholder="Enter a number">
+    <br>
+    <button onclick="showFactorial()">Factorial</button>
+    <button onclick="showFibonacci()">Fibonacci</button>
+    <button onclick="showPrimes()">Prime Numbers</button>
+    <button onclick="checkPalindrome()">Palindrome</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // (i) Factorial function
+    function factorial(n) {
+      if (n < 0) return "Not defined for negative numbers";
+      let fact = 1;
+      for (let i = 1; i <= n; i++) fact *= i;
+      return fact;
+    }
+
+    // (ii) Fibonacci series function
+    function fibonacci(n) {
+      let fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      return fib.slice(0, n);
+    }
+
+    // (iii) Prime number check function
+    function primesUpTo(n) {
+      let primes = [];
+      for (let num = 2; num <= n; num++) {
+        let isPrime = true;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+        if (isPrime) primes.push(num);
+      }
+      return primes;
+    }
+
+    // (iv) Palindrome check function
+    function isPalindrome(num) {
+      let str = num.toString();
+      let reversed = str.split('').reverse().join('');
+      return str === reversed;
+    }
+
+    // Event functions to display results
+    function showFactorial() {
+      let n = parseInt(document.getElementById("num").value);
+      document.getElementById("result").innerHTML = `<b>Factorial of ${n}:</b> ${factorial(n)}`;
+    }
+
+    function showFibonacci() {
+      let n = parseInt(document.getElementById("num").value);
+      document.getElementById("result").innerHTML = `<b>Fibonacci series up to ${n}:</b> ${fibonacci(n).join(", ")}`;
+    }
+
+    function showPrimes() {
+      let n = parseInt(document.getElementById("num").value);
+      document.getElementById("result").innerHTML = `<b>Prime numbers up to ${n}:</b> ${primesUpTo(n).join(", ")}`;
+    }
+
+    function checkPalindrome() {
+      let n = parseInt(document.getElementById("num").value);
+      let result = isPalindrome(n) ? "is a Palindrome ✅" : "is NOT a Palindrome ❌";
+      document.getElementById("result").innerHTML = `<b>${n}</b> ${result}`;
+    }
+  </script>
+</body>
+</html>

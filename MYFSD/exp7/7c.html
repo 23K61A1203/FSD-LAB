@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Object Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f0f9ff, #e0f2fe);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 750px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 16px;
+      margin: 8px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #2563eb;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover { background: #1742a1; }
+    #output {
+      margin-top: 20px;
+      background: #f8fbff;
+      padding: 15px;
+      border: 1px solid #cfe0f9;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Array Object Properties & Methods</h1>
+    <p>Click the buttons below to see how <b>Array</b> object works:</p>
+
+    <button onclick="showLength()">Array Length</button>
+    <button onclick="usePush()">Push</button>
+    <button onclick="usePop()">Pop</button>
+    <button onclick="useShift()">Shift</button>
+    <button onclick="useUnshift()">Unshift</button>
+    <button onclick="useSort()">Sort</button>
+    <button onclick="useReverse()">Reverse</button>
+    <button onclick="useJoin()">Join</button>
+    <button onclick="useSlice()">Slice</button>
+    <button onclick="useSplice()">Splice</button>
+
+    <div id="output">👉 Results will appear here.</div>
+  </div>
+
+  <script>
+    let fruits = ["Apple", "Banana", "Mango", "Orange"];
+
+    function displayArray(msg) {
+      document.getElementById("output").innerHTML =
+        msg + "\nCurrent Array: [" + fruits.join(", ") + "]";
+    }
+
+    function showLength() {
+      displayArray("📏 Length of array: " + fruits.length);
+    }
+
+    function usePush() {
+      fruits.push("Grapes");
+      displayArray("🍇 Used push() → Added Grapes");
+    }
+
+    function usePop() {
+      let removed = fruits.pop();
+      displayArray("❌ Used pop() → Removed " + removed);
+    }
+
+    function useShift() {
+      let removed = fruits.shift();
+      displayArray("⬅️ Used shift() → Removed " + removed);
+    }
+
+    function useUnshift() {
+      fruits.unshift("Kiwi");
+      displayArray("🥝 Used unshift() → Added Kiwi at start");
+    }
+
+    function useSort() {
+      fruits.sort();
+      displayArray("🔠 Used sort()");
+    }
+
+    function useReverse() {
+      fruits.reverse();
+      displayArray("🔄 Used reverse()");
+    }
+
+    function useJoin() {
+      let joined = fruits.join(" | ");
+      displayArray("🔗 Used join() → " + joined);
+    }
+
+    function useSlice() {
+      let sliced = fruits.slice(1, 3);
+      displayArray("✂️ Used slice(1,3) → " + sliced.join(", "));
+    }
+
+    function useSplice() {
+      fruits.splice(2, 1, "Papaya"); 
+      displayArray("🆕 Used splice(2,1,'Papaya') → Replaced element at index 2");
+    }
+  </script>
+</body>
+</html>

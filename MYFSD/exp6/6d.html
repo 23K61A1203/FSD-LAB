@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voter Eligibility Check</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f9fbff, #dde7ff);
+      padding: 30px;
+      color: #222;
+    }
+    h1 { text-align: center; }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 60%;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background: #0077ff;
+      color: #fff;
+    }
+    tr:nth-child(even) { background: #f4f8ff; }
+    .eligible { color: green; font-weight: bold; }
+    .not-eligible { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Voter Information</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Voting Eligibility</th>
+      </tr>
+    </thead>
+    <tbody id="voterTable"></tbody>
+  </table>
+
+  <script>
+    // Ask for user details using prompt()
+    let name = prompt("Enter your name:");
+    let age = prompt("Enter your age:");
+
+    // Convert age to number
+    age = Number(age);
+
+    // Check eligibility
+    let eligibility = "";
+    if (isNaN(age) || age <= 0) {
+      eligibility = "<span class='not-eligible'>Invalid Age</span>";
+    } else if (age >= 18) {
+      eligibility = "<span class='eligible'>✅ Eligible to Vote</span>";
+    } else {
+      eligibility = "<span class='not-eligible'>❌ Not Eligible to Vote</span>";
+    }
+
+    // Insert row into table
+    document.getElementById("voterTable").innerHTML = `
+      <tr>
+        <td>${name || "Anonymous"}</td>
+        <td>${isNaN(age) ? "Invalid" : age}</td>
+        <td>${eligibility}</td>
+      </tr>
+    `;
+  </script>
+</body>
+</html>

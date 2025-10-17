@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Denomination Calculator</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 400px;
+      text-align: center;
+    }
+    h1 {
+      color: #0c4a6e;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      font-size: 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0369a1;
+    }
+    #result {
+      margin-top: 20px;
+      text-align: left;
+      font-weight: 500;
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Bank Denomination Calculator</h1>
+    <input type="number" id="amount" placeholder="Enter amount (₹)">
+    <br>
+    <button onclick="calculateDenominations()">Show Denominations</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateDenominations() {
+      let amount = parseInt(document.getElementById("amount").value);
+      let denominations = [100, 50, 20, 10, 5, 2, 1];
+      let resultText = "";
+
+      if (isNaN(amount) || amount <= 0) {
+        document.getElementById("result").innerHTML = "⚠️ Please enter a valid amount.";
+        return;
+      }
+
+      resultText += `<h3>Denominations for ₹${amount}</h3><ul>`;
+      for (let i = 0; i < denominations.length; i++) {
+        let count = Math.floor(amount / denominations[i]);
+        if (count > 0) {
+          resultText += `<li>${count} × ₹${denominations[i]}'s</li>`;
+          amount = amount % denominations[i];
+        }
+      }
+      resultText += "</ul>";
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+</body>
+</html>

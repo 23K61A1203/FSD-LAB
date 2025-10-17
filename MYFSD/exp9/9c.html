@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form Validation</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#d7eaff, #f5f9ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  form {
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 350px;
+  }
+  h2 {
+    text-align: center;
+    color: #0056b3;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #005fcc;
+  }
+  .error {
+    color: red;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<form onsubmit="return validateForm()">
+  <h2>Registration Form</h2>
+  <label>Name:</label>
+  <input type="text" id="name" placeholder="Enter Name">
+  <div id="nameError" class="error"></div>
+
+  <label>Mobile:</label>
+  <input type="text" id="mobile" placeholder="Enter Mobile Number">
+  <div id="mobileError" class="error"></div>
+
+  <label>Email:</label>
+  <input type="text" id="email" placeholder="Enter Email ID">
+  <div id="emailError" class="error"></div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+function validateForm() {
+  let name = document.getElementById("name").value.trim();
+  let mobile = document.getElementById("mobile").value.trim();
+  let email = document.getElementById("email").value.trim();
+
+  let namePattern = /^[A-Za-z][A-Za-z0-9]{5,}$/;
+  let mobilePattern = /^[0-9]{10}$/;
+  let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+
+  let valid = true;
+
+  // Clear old errors
+  document.getElementById("nameError").innerText = "";
+  document.getElementById("mobileError").innerText = "";
+  document.getElementById("emailError").innerText = "";
+
+  // Validate Name
+  if (!namePattern.test(name)) {
+    document.getElementById("nameError").innerText =
+      "Name must start with a letter, contain letters/numbers, and be at least 6 characters.";
+    valid = false;
+  }
+
+  // Validate Mobile
+  if (!mobilePattern.test(mobile)) {
+    document.getElementById("mobileError").innerText =
+      "Mobile must contain exactly 10 digits.";
+    valid = false;
+  }
+
+  // Validate Email
+  if (!emailPattern.test(email)) {
+    document.getElementById("emailError").innerText =
+      "Enter a valid email (e.g., example@gmail.com).";
+    valid = false;
+  }
+
+  if (valid) {
+    alert("✅ Registration Successful!");
+  }
+
+  return valid;
+}
+</script>
+
+</body>
+</html>

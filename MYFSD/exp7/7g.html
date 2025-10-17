@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Object Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#fffaf0, #fff0e0);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 750px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 16px;
+      margin: 8px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #f59e0b;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover { background: #b45309; }
+    #output {
+      margin-top: 20px;
+      background: #fff7ed;
+      padding: 15px;
+      border: 1px solid #ffedd5;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Date Object Properties & Methods</h1>
+    <p>Click the buttons to explore <b>Date</b> object features:</p>
+
+    <button onclick="showCurrentDateTime()">Current Date & Time</button>
+    <button onclick="getDateComponents()">Get Date Components</button>
+    <button onclick="setDateComponents()">Set Date Components</button>
+    <button onclick="formatDateString()">Format Date String</button>
+
+    <div id="output">👉 Results will appear here.</div>
+  </div>
+
+  <script>
+    let myDate = new Date();
+
+    function showCurrentDateTime() {
+      let now = new Date();
+      document.getElementById("output").innerText =
+        `Current Date & Time:\n${now.toString()}`;
+    }
+
+    function getDateComponents() {
+      let d = myDate;
+      document.getElementById("output").innerText =
+        `Original Date: ${d.toString()}\n` +
+        `Year: ${d.getFullYear()}\n` +
+        `Month: ${d.getMonth()} (0 = Jan, 11 = Dec)\n` +
+        `Date: ${d.getDate()}\n` +
+        `Day: ${d.getDay()} (0 = Sun)\n` +
+        `Hours: ${d.getHours()}\n` +
+        `Minutes: ${d.getMinutes()}\n` +
+        `Seconds: ${d.getSeconds()}\n` +
+        `Milliseconds: ${d.getMilliseconds()}`;
+    }
+
+    function setDateComponents() {
+      let d = new Date();
+      d.setFullYear(2025);
+      d.setMonth(8); // September (0-indexed)
+      d.setDate(29);
+      d.setHours(18);
+      d.setMinutes(45);
+      d.setSeconds(30);
+      document.getElementById("output").innerText =
+        `Modified Date:\n${d.toString()}`;
+    }
+
+    function formatDateString() {
+      let d = new Date();
+      let formatted = `${d.getDate().toString().padStart(2,'0')}/` +
+                      `${(d.getMonth()+1).toString().padStart(2,'0')}/` +
+                      `${d.getFullYear()} ${d.getHours().toString().padStart(2,'0')}:` +
+                      `${d.getMinutes().toString().padStart(2,'0')}:` +
+                      `${d.getSeconds().toString().padStart(2,'0')}`;
+      document.getElementById("output").innerText =
+        `Formatted Date & Time:\n${formatted}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Object Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#fef9f9, #ffeaea);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 750px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 16px;
+      margin: 8px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #e11d48;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover { background: #a60f36; }
+    #output {
+      margin-top: 20px;
+      background: #fff0f5;
+      padding: 15px;
+      border: 1px solid #ffcce0;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>String Object Properties & Methods</h1>
+    <p>Click the buttons to explore <b>String</b> object features:</p>
+
+    <button onclick="showLength()">String Length</button>
+    <button onclick="convertCase()">Uppercase & Lowercase</button>
+    <button onclick="useConcat()">Concatenation</button>
+    <button onclick="useSlice()">Slice</button>
+    <button onclick="useSubstring()">Substring</button>
+    <button onclick="useIndexOf()">Index Of</button>
+    <button onclick="useIncludes()">Includes</button>
+    <button onclick="useTrim()">Trim</button>
+    <button onclick="useReplace()">Replace</button>
+
+    <div id="output">👉 Results will appear here.</div>
+  </div>
+
+  <script>
+    let str = "  Hello, JavaScript World!  ";
+
+    function showLength() {
+      document.getElementById("output").innerText =
+        `String: "${str}"\nLength: ${str.length}`;
+    }
+
+    function convertCase() {
+      document.getElementById("output").innerText =
+        `Original: "${str}"\nUppercase: "${str.toUpperCase()}"\nLowercase: "${str.toLowerCase()}"`;
+    }
+
+    function useConcat() {
+      let newStr = str.concat(" Let's learn JS.");
+      document.getElementById("output").innerText =
+        `Concatenated String:\n"${newStr}"`;
+    }
+
+    function useSlice() {
+      let sliced = str.slice(2, 12);
+      document.getElementById("output").innerText =
+        `Sliced (2,12): "${sliced}"`;
+    }
+
+    function useSubstring() {
+      let substr = str.substring(2, 12);
+      document.getElementById("output").innerText =
+        `Substring (2,12): "${substr}"`;
+    }
+
+    function useIndexOf() {
+      let index = str.indexOf("JavaScript");
+      document.getElementById("output").innerText =
+        `"JavaScript" found at index: ${index}`;
+    }
+
+    function useIncludes() {
+      let check = str.includes("World");
+      document.getElementById("output").innerText =
+        `"World" included? → ${check}`;
+    }
+
+    function useTrim() {
+      let trimmed = str.trim();
+      document.getElementById("output").innerText =
+        `Before trim: "${str}"\nAfter trim: "${trimmed}"`;
+    }
+
+    function useReplace() {
+      let replaced = str.replace("JavaScript", "JS");
+      document.getElementById("output").innerText =
+        `Before replace: "${str}"\nAfter replace: "${replaced}"`;
+    }
+  </script>
+</body>
+</html>

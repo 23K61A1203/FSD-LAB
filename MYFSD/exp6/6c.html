@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Different Ways to Take Input in JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f7fbff, #e8f0ff);
+      padding: 30px;
+      color: #222;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      max-width: 700px;
+    }
+    h1 { text-align: center; }
+    button {
+      margin: 10px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #0077ff;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover { background: #005fcc; }
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f4f8ff;
+      border: 1px solid #ccdfff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Different Ways to Take Input in JavaScript</h1>
+    <p>Click the buttons or use the form to try input methods:</p>
+
+    <button onclick="usePrompt()">1. Using prompt()</button>
+    <button onclick="useConfirm()">2. Using confirm()</button>
+
+    <h3>3. Using HTML Form Input</h3>
+    <form id="userForm">
+      <label>Enter your name: 
+        <input type="text" id="nameInput" placeholder="Type here">
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="output">
+      <strong>Default Information:</strong><br>
+      JavaScript provides multiple ways to take input from the user:  
+      <ul>
+        <li><b>prompt()</b> → To directly ask the user for a text value.</li>
+        <li><b>confirm()</b> → To get a Yes/No (true/false) response.</li>
+        <li><b>HTML Forms</b> → To collect structured input like text, numbers, dates, etc.</li>
+      </ul>
+      These methods help developers interact with users and collect data for processing.
+    </div>
+  </div>
+
+  <script>
+    // 1. Prompt Example
+    function usePrompt() {
+      let userInput = prompt("Enter your favorite color:");
+      if (userInput === null) {
+        document.getElementById("output").innerHTML = "Prompt was cancelled.";
+      } else {
+        document.getElementById("output").innerHTML = 
+          `You entered (from prompt): <strong>${userInput}</strong>`;
+      }
+    }
+
+    // 2. Confirm Example
+    function useConfirm() {
+      let response = confirm("Do you like JavaScript?");
+      document.getElementById("output").innerHTML = 
+        response ? "✅ User clicked OK (Yes)" : "❌ User clicked Cancel (No)";
+    }
+
+    // 3. Form Input Example
+    document.getElementById("userForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent page refresh
+      let name = document.getElementById("nameInput").value;
+      document.getElementById("output").innerHTML = 
+        `Hello, <strong>${name || "Anonymous"}</strong>! (from form input)`;
+    });
+  </script>
+</body>
+</html>

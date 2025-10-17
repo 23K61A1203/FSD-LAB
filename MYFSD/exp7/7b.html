@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Object Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f9fcff, #e3f2ff);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #0078ff;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover { background: #005fcc; }
+    #output {
+      margin-top: 20px;
+      background: #f4f8ff;
+      padding: 15px;
+      border: 1px solid #ccdfff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Window Object Properties & Methods</h1>
+    <p>Click the buttons to try out different <b>window</b> object features:</p>
+
+    <button onclick="showInnerSize()">Show Inner Window Size</button>
+    <button onclick="openNewWindow()">Open New Window</button>
+    <button onclick="closeNewWindow()">Close New Window</button>
+    <button onclick="showAlert()">Show Alert</button>
+    <button onclick="showConfirm()">Show Confirm</button>
+    <button onclick="showPrompt()">Show Prompt</button>
+
+    <div id="output">👉 Results will appear here.</div>
+  </div>
+
+  <script>
+    let newWin; // to store reference of new window
+
+    // Show window size (innerWidth & innerHeight)
+    function showInnerSize() {
+      document.getElementById("output").innerHTML =
+        "📏 Inner Window Size: " + window.innerWidth + " x " + window.innerHeight;
+    }
+
+    // Open a new window
+    function openNewWindow() {
+      newWin = window.open("", "", "width=400,height=300");
+      newWin.document.write("<h2 style='color:blue;'>Hello! This is a new window.</h2>");
+    }
+
+    // Close the new window
+    function closeNewWindow() {
+      if (newWin && !newWin.closed) {
+        newWin.close();
+        document.getElementById("output").innerHTML = "✅ New window has been closed.";
+      } else {
+        document.getElementById("output").innerHTML = "⚠️ No window is open.";
+      }
+    }
+
+    // Alert box
+    function showAlert() {
+      window.alert("This is an alert using window.alert()");
+    }
+
+    // Confirm box
+    function showConfirm() {
+      let choice = window.confirm("Do you like JavaScript?");
+      document.getElementById("output").innerHTML =
+        choice ? "👍 You clicked OK!" : "👎 You clicked Cancel.";
+    }
+
+    // Prompt box
+    function showPrompt() {
+      let name = window.prompt("Enter your name:");
+      document.getElementById("output").innerHTML =
+        name ? "Hello, <b>" + name + "</b>! 👋" : "You cancelled the prompt.";
+    }
+  </script>
+</body>
+</html>

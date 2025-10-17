@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Internal & External JavaScript — Example</title>
+  <style>
+    body { font-family: Inter, system-ui, Arial; background: linear-gradient(180deg,#f7f9fc,#eef6ff); padding: 28px; }
+    .card { background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(24,39,75,0.06); padding: 18px; max-width: 880px; margin: auto; }
+    h1{margin-top:0;font-size:22px}
+    pre{background:#f4f7fb;padding:10px;border-radius:8px;overflow:auto}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    input[type=text]{padding:8px;border-radius:6px;border:1px solid #d6e1f2}
+    button{padding:8px 12px;border-radius:8px;border:none;background:#2563eb;color:white;cursor:pointer}
+    small.note{color:#6b7280}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Internal & External JavaScript — Demo</h1>
+    <p>
+      JavaScript can be added to a webpage in two main ways:
+    </p>
+    <ul>
+      <li><strong>Internal JavaScript</strong> → Code written inside the same HTML file, within <code>&lt;script&gt;</code> tags.</li>
+      <li><strong>External JavaScript</strong> → Code saved in a separate <code>.js</code> file and linked to HTML using <code>&lt;script src="..."&gt;</code>.</li>
+    </ul>
+    <p>
+      👉 Internal scripts are useful for quick demos and learning.<br>
+      👉 External scripts make projects more organized, reusable, and cacheable.
+    </p>
+
+    <section>
+      <h2>1) Internal JavaScript (inside &lt;script&gt; in this HTML)</h2>
+      <p class="note">Click the buttons to run the internal examples.</p>
+      <div class="row" style="margin-bottom:12px">
+        <button onclick="internalPromptGreet()">Prompt & Alert (I/O)</button>
+        <button onclick="internalConvertDemo()">Type Conversion Demo</button>
+        <button onclick="document.getElementById('consoleOutput').textContent = '';">Clear Console</button>
+      </div>
+      <div>
+        <label>Enter a number: <input id="numInput" type="text" value="12" /></label>
+        <button onclick="internalAddTen()">Add 10 (internal)</button>
+      </div>
+      <pre id="consoleOutput" aria-live="polite" style="min-height:60px;margin-top:12px">Console output will appear here.</pre>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>2) External JavaScript (file: <code>external.js</code>)</h2>
+      <p class="note">
+        This page loads <code>external.js</code>. Save the external file (content below) as <code>external.js</code> 
+        right next to this HTML file, then reload the page to use the external functions.
+      </p>
+      <div class="row" style="margin-bottom:12px">
+        <button onclick="if(typeof externalSayHello === 'function'){externalSayHello();}else{alert('external.js not loaded — save external.js and reload the page.')}" >Call externalSayHello()</button>
+        <button onclick="if(typeof externalMultiply === 'function'){document.getElementById('consoleOutput').textContent += '\nexternalMultiply(6,7) = '+externalMultiply(6,7);}else{alert('external.js not loaded.')}" >Call externalMultiply(6,7)</button>
+      </div>
+
+      <h3>external.js (save this file beside the HTML)</h3>
+      <pre>
+// ----- external.js -----
+// Save this exact text as a file named: external.js (same folder as the HTML file)
+
+// simple external function: shows an alert
+function externalSayHello(){
+  alert('Hello from external.js!');
+}
+
+// pure function used for calculation (no UI)
+function externalMultiply(a,b){
+  return a * b;
+}
+
+// exported object style (optional): attach to window for easier access
+window.ExternalUtils = {
+  parseNumberOrZero: function(v){
+    var n = Number(v);
+    return isNaN(n) ? 0 : n;
+  }
+};
+// ----- end external.js -----
+      </pre>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>3) Notes & Quick Explanation</h2>
+      <ul>
+        <li><strong>Internal script</strong> runs immediately or when user interacts — good for page-specific behaviors.</li>
+        <li><strong>External script</strong> keeps your JavaScript in a separate file (cleaner, cacheable): <code>&lt;script src="external.js"&gt;&lt;/script&gt;</code>.</li>
+        <li><strong>I/O Examples:</strong> <code>prompt()</code> takes input, <code>alert()</code> shows output, <code>console.log()</code> helps debugging.</li>
+        <li><strong>Type Conversion:</strong> 
+          <code>String()</code>, <code>Number()</code>, <code>parseInt()</code>, unary <code>+</code>, and <code>toString()</code>.
+        </li>
+      </ul>
+      <p>
+        <strong>Why learn both?</strong><br>
+        Internal JavaScript is handy for small pages. But for large projects:
+      </p>
+      <ul>
+        <li>Separation of concerns: HTML for content, CSS for design, JS for logic.</li>
+        <li>Better performance — browsers can cache external files.</li>
+        <li>Cleaner code and easier debugging.</li>
+      </ul>
+    </section>
+
+    <p style="color:#374151;font-weight:bold;">
+      ✅ In summary: Use internal JavaScript for simple learning or demos,
+      but prefer external JavaScript in real-world projects for cleaner, faster,
+      and more maintainable web applications.
+    </p>
+
+    <hr />
+
+    <!-- INTERNAL JAVASCRIPT: examples below -->
+    <script>
+    // Internal JS: I/O and type conversion examples
+
+    function logToConsoleArea(msg){
+      var el = document.getElementById('consoleOutput');
+      el.textContent += (el.textContent ? '\n' : '') + msg;
+      console.log(msg);
+    }
+
+    function internalPromptGreet(){
+      var name = prompt('What is your name?','Guest');
+      if(name === null){ // user cancelled
+        alert('You cancelled the prompt.');
+        return;
+      }
+      alert('Hi, ' + name + '! This alert came from internal JS.');
+      logToConsoleArea('Greeted: ' + name);
+    }
+
+    function internalConvertDemo(){
+      var a = '42';
+      var b = '3.14';
+      var c = 'not-a-number';
+
+      logToConsoleArea('String to Number: Number("' + a + '") => ' + Number(a));
+      logToConsoleArea('Unary +: +(\'' + b + '\') => ' + (+b));
+      logToConsoleArea('parseInt("' + b + '") => ' + parseInt(b));
+      logToConsoleArea('Number("' + c + '") => ' + Number(c) + ' (NaN)');
+      logToConsoleArea('isNaN(Number("' + c + '")) => ' + isNaN(Number(c)));
+
+      var n = Number('15');
+      logToConsoleArea('Number to String: (15).toString() => ' + n.toString());
+
+      // explicit conversion example for user input
+      var userVal = document.getElementById('numInput').value;
+      logToConsoleArea('User input (string): "' + userVal + '"');
+      var added = Number(userVal) + 10; // converts to number
+      logToConsoleArea('As number +10 => ' + added);
+    }
+
+    function internalAddTen(){
+      var v = document.getElementById('numInput').value;
+      // safe conversion using ExternalUtils if available
+      var parsed;
+      if(window.ExternalUtils && typeof window.ExternalUtils.parseNumberOrZero === 'function'){
+        parsed = window.ExternalUtils.parseNumberOrZero(v);
+        logToConsoleArea('Used ExternalUtils.parseNumberOrZero: ' + parsed);
+      } else {
+        parsed = Number(v);
+        if(isNaN(parsed)) parsed = 0;
+        logToConsoleArea('Used internal Number() fallback: ' + parsed);
+      }
+      logToConsoleArea(parsed + ' + 10 = ' + (parsed + 10));
+    }
+
+    // Dynamically load external.js if present
+    (function tryLoadExternal(){
+      var s = document.createElement('script');
+      s.src = 'external.js';
+      s.async = false;
+      s.onload = function(){ logToConsoleArea('external.js loaded successfully.'); };
+      s.onerror = function(){ logToConsoleArea('external.js NOT found — save external.js next to this HTML to enable external examples.'); };
+      document.head.appendChild(s);
+    })();
+
+    </script>
+  </div>
+</body>
+</html>

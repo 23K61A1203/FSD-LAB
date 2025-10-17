@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week Days Using Switch Case</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f0fff0, #e0ffe0);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 { margin-bottom: 20px; }
+    input[type=number] {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #c0c0c0;
+      width: 80px;
+      text-align: center;
+    }
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #10b981;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    button:hover { background: #059669; }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #065f46;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Display Week Days</h1>
+    <p>Enter a number (1 to 7) to display the corresponding day:</p>
+    <input type="number" id="dayNum" min="1" max="7" placeholder="1-7">
+    <button onclick="showWeekDay()">Show Day</button>
+    <div id="output">👉 Output will appear here</div>
+  </div>
+
+  <script>
+    function showWeekDay() {
+      let day = parseInt(document.getElementById("dayNum").value);
+      let dayName = "";
+
+      switch(day) {
+        case 1:
+          dayName = "Sunday";
+          break;
+        case 2:
+          dayName = "Monday";
+          break;
+        case 3:
+          dayName = "Tuesday";
+          break;
+        case 4:
+          dayName = "Wednesday";
+          break;
+        case 5:
+          dayName = "Thursday";
+          break;
+        case 6:
+          dayName = "Friday";
+          break;
+        case 7:
+          dayName = "Saturday";
+          break;
+        default:
+          dayName = "Invalid input! Enter a number between 1 and 7.";
+      }
+
+      document.getElementById("output").innerText = dayName;
+    }
+  </script>
+</body>
+</html>

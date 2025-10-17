@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User-defined Object (Class) Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#fff0f5, #ffe4e1);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 16px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      background: #ec4899;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #be185d; }
+    #output {
+      margin-top: 20px;
+      background: #fff0f5;
+      padding: 15px;
+      border: 1px solid #fbcfe8;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>User-defined Object Using Class</h1>
+    <p>Click the button below to create a user object and display details using class syntax:</p>
+    
+    <button onclick="createUser()">Create & Display User</button>
+    
+    <div id="output">👉 Output will appear here.</div>
+  </div>
+
+  <script>
+    // User-defined class
+    class User {
+      // Constructor
+      constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this._age = age; // private-ish property by convention (_)
+      }
+
+      // Method
+      getFullName() {
+        return `${this.firstName} ${this.lastName}`;
+      }
+
+      // Getter
+      get age() {
+        return this._age;
+      }
+
+      // Setter
+      set age(value) {
+        if(value > 0 && value < 120){
+          this._age = value;
+        } else {
+          alert("Invalid age! Must be 1-119.");
+        }
+      }
+
+      // Display method
+      displayInfo() {
+        return `Full Name: ${this.getFullName()}\nAge: ${this.age}`;
+      }
+    }
+
+    function createUser() {
+      let user1 = new User("Chandana", "Addagarla", 21);
+
+      // Change age using setter
+      user1.age = 19;
+
+      // Display info using method
+      document.getElementById("output").innerText = user1.displayInfo();
+    }
+  </script>
+</body>
+</html>

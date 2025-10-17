@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Object Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#f0f9ff, #e0f2fe);
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 750px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 16px;
+      margin: 8px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #2563eb;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover { background: #1742a1; }
+    #output {
+      margin-top: 20px;
+      background: #f8fbff;
+      padding: 15px;
+      border: 1px solid #cfe0f9;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Math Object Properties & Methods</h1>
+    <p>Click the buttons to explore <b>Math</b> object features:</p>
+
+    <button onclick="showConstants()">Show Constants</button>
+    <button onclick="useRound()">Round a Number</button>
+    <button onclick="useFloor()">Floor a Number</button>
+    <button onclick="useCeil()">Ceil a Number</button>
+    <button onclick="useRandom()">Random Number</button>
+    <button onclick="usePower()">Power (Math.pow)</button>
+    <button onclick="useSqrt()">Square Root</button>
+    <button onclick="useAbs()">Absolute Value</button>
+    <button onclick="useMinMax()">Min & Max</button>
+
+    <div id="output">👉 Results will appear here.</div>
+  </div>
+
+  <script>
+    function showConstants() {
+      let pi = Math.PI;
+      let e = Math.E;
+      document.getElementById("output").innerText =
+        `📌 Math Constants:\nPI = ${pi}\nE = ${e}`;
+    }
+
+    function useRound() {
+      let num = 4.7;
+      document.getElementById("output").innerText =
+        `Math.round(${num}) → ${Math.round(num)}`;
+    }
+
+    function useFloor() {
+      let num = 4.7;
+      document.getElementById("output").innerText =
+        `Math.floor(${num}) → ${Math.floor(num)}`;
+    }
+
+    function useCeil() {
+      let num = 4.3;
+      document.getElementById("output").innerText =
+        `Math.ceil(${num}) → ${Math.ceil(num)}`;
+    }
+
+    function useRandom() {
+      let rand = Math.random();
+      document.getElementById("output").innerText =
+        `Math.random() → ${rand.toFixed(4)}`;
+    }
+
+    function usePower() {
+      document.getElementById("output").innerText =
+        `Math.pow(3,4) → ${Math.pow(3,4)}`;
+    }
+
+    function useSqrt() {
+      document.getElementById("output").innerText =
+        `Math.sqrt(16) → ${Math.sqrt(16)}`;
+    }
+
+    function useAbs() {
+      let num = -15;
+      document.getElementById("output").innerText =
+        `Math.abs(${num}) → ${Math.abs(num)}`;
+    }
+
+    function useMinMax() {
+      let numbers = [5, 12, 8, 20, 3];
+      document.getElementById("output").innerText =
+        `Numbers: [${numbers}]\nMath.min(...) → ${Math.min(...numbers)}\nMath.max(...) → ${Math.max(...numbers)}`;
+    }
+  </script>
+</body>
+</html>

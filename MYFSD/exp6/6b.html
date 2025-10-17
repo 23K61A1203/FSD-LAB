@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Output Methods</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: linear-gradient(#f7fbff, #dbe9ff);
+      padding: 30px;
+      color: #222;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      max-width: 700px;
+    }
+    h1 { text-align: center; }
+    button {
+      margin: 10px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #0077ff;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #005fcc;
+    }
+    #outputArea {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f4f8ff;
+      border: 1px solid #ccdfff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Different Ways to Display Output in JavaScript</h1>
+    <p>Click the buttons to see each output method:</p>
+
+    <button onclick="showAlert()">1. Alert Box</button>
+    <button onclick="useDocumentWrite()">2. document.write()</button>
+    <button onclick="updateInnerHTML()">3. innerHTML (Page Update)</button>
+    <button onclick="logToConsole()">4. console.log()</button>
+
+    <div id="outputArea">
+      <strong>Default Information:</strong><br>
+      JavaScript provides different ways to display output:<br>
+      <ul>
+        <li><b>alert()</b> → Displays a popup alert box.</li>
+        <li><b>document.write()</b> → Writes directly to the webpage (not recommended after page load).</li>
+        <li><b>innerHTML</b> → Updates content of an HTML element dynamically.</li>
+        <li><b>console.log()</b> → Sends output to the browser console (used for debugging).</li>
+      </ul>
+      These methods help programmers show results, debug code, or interact with users effectively.
+    </div>
+  </div>
+
+  <script>
+    function showAlert() {
+      alert("Hello! This is an output using ALERT box.");
+    }
+
+    function useDocumentWrite() {
+      document.write("<h2 style='color:green;'>This text is displayed using document.write()</h2>");
+      document.write("<p>⚠️ Note: document.write will overwrite the page after loading!</p>");
+    }
+
+    function updateInnerHTML() {
+      document.getElementById("outputArea").innerHTML = 
+        "<strong>innerHTML Output:</strong> JavaScript updated this text inside the page!";
+    }
+
+    function logToConsole() {
+      console.log("This is console.log() output → check Developer Tools → Console tab.");
+      document.getElementById("outputArea").innerHTML = 
+        "✅ console.log() was executed. Open the console to view the message.";
+    }
+  </script>
+</body>
+</html>
